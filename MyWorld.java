@@ -11,18 +11,23 @@ public class MyWorld extends World {
     // constructor for objects of class MyWOrld
     public MyWorld() {
         // create a new world
-        super(600, 400, 1);
+        super(600, 400, 1, false);
 
         // create elephant object
         Elephant elephant = new Elephant();
-        addObject(elephant, 300, 200);
-        addObject(elephant, 300, 300);
-        
+        addObject(elephant, 300, 350);
+
         // create a label
         scoreLabel = new Label(0, 80);
-        addObject(scoreLabel, 50 , 50);
+        addObject(scoreLabel, 40 , 40);
 
         createApple();
+    }
+    // game over
+    public void gameOver() {
+        Label gameOverLabel = new Label("Game Over", 100);
+        addObject(gameOverLabel, 300, 200);
+        
     }
 
     // increase score
@@ -30,12 +35,11 @@ public class MyWorld extends World {
         score++;
         scoreLabel.setValue(score);
     }
-    
+
     // create new apple at random location at top
     public void createApple(){
         Apple apple = new Apple();
         int x = Greenfoot.getRandomNumber(600);
-        int y = Greenfoot.getRandomNumber(300);
-        addObject(apple, x, y);
+        addObject(apple, x, 90);
     }
 }
